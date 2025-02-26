@@ -5,12 +5,12 @@ import React, { useContext } from 'react';
       const { addNotification } = useContext(NotificationContext);
 
       const handleClick = () => {
-        addNotification('Button pressed!');
+        addNotification('Button pressed!!!');
       };
 
       return (
         <div>
-          <button onClick={handleClick}>Press Me</button>
+          <button onClick={handleClick}>Press this button</button>
         </div>
       );
     }

@@ -1,10 +1,13 @@
+import { Outlet } from "react-router-dom"
+import { UserProvider } from '../../context/useUser'
 
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = () => {
     return (
         <div>
-            admin layout
-            {children}
+            <UserProvider>
+                <Outlet />
+            </UserProvider>
         </div>
     )
 }

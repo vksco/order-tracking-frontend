@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { routes } from './routes';
-import Layout from './layouts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Layout>
+    <ToastContainer />
       <RouterProvider router={routes} />
-
-    </Layout>
   </React.StrictMode>
 );

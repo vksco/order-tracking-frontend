@@ -1,22 +1,32 @@
 import { useState } from "react";
 import { loginApi } from "../../services/authService";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
+    const navigation = useNavigate()
 
     const [form, setForm] = useState({
-        email: 'admin@email.com',
-        password: '123456'
+        email: 'vikash@email.com',
+        password: '1234564'
     })
     
     const onFormSubmit = async (e) => {
         e.preventDefault();
         
-        
-        const loginData = await loginApi({ email: form.email, password: form.password })
-        if(loginData.status === 200){
-            localStorage.setItem('user_token', loginData.data.data.token)
-        }
+        try {
+            const loginData = await loginApi({ email: form.email, password: form.password })
+            
+            if(loginData.status === 200){
+                localStorage.setItem('user_token', loginData.data.data.token)
+                localStorage.setItem('user', JSON.stringify(loginData.data.data.user))
+                toast.success("Login success")
+                navigation('/')
+            }
+        } catch (error) {
+            toast.error(error.response.data.message)
+        }   
     }
 
     return (
